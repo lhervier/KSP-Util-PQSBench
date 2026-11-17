@@ -155,7 +155,9 @@ namespace com.github.lhervier.ksp.util.pqsbench
         {
             // How many vertices a quad holds is not said here: PQS.cacheVertCount is still 0 this early,
             // and only gets its value when the first terrain sphere starts up. The dump reports it.
-            Log.Info($"Version {typeof(KSPUtilPQSBench).Assembly.GetName().Version} installed, measuring."
+            string version = typeof(KSPUtilPQSBench).Assembly
+                .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
+            Log.Info($"Version {version} installed, measuring."
                 + " The window's Dump writes what has been recorded, Reset throws it away; Alt+F6 shows or hides"
                 + " the window.");
             if (Log.IsDebugEnabled)
